@@ -6,8 +6,8 @@ gélida enquanto aguarda seu resgate.
 ## Assets
 
 - [ ] Tileset (Ambiente, chão, obstáculos, ...)
-- [ ] Personagem
-- [ ] Fonte de calor (ex. Fogueira)
+- [x] Personagem
+- [x] Fonte de calor (ex. Fogueira)
 - [ ] Comida
 - [ ] Combustível
 - [ ] Inimigos :question:
@@ -16,11 +16,12 @@ gélida enquanto aguarda seu resgate.
 
 ## Mecânicas / Programação
 
-- [ ] Exploração (controlar o player)
+- [x] Exploração (controlar o player)
 - [ ] Coleta de Recurso (inventário simples :question:)
 - [ ] Consumo de combustível pela Fogueira
-- [ ] Fome e Frio
-- [ ] Ciclio Dia e Noite simplificado
+- [ ] Fome
+- [x] Aquecer / Esfriar
+- [ ] Ciclio Dia e Noite simplificado :question:
 
 ## Narrativa
 
@@ -31,7 +32,7 @@ Agora você deve sobreviver até que ajuda chegue e te resgate.
 
 ## Core Loop
 
-```
+```txt
 ╔═════════════════════════╗
 ║    Explorar a Tundra    ║╌┐
 ╚═════════════════════════╝ ╎
