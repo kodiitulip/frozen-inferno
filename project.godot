@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Frozen Inferno"
-config/description="Enter an interesting project description here!"
+config/description="Um jogo em que você busca alimento e combustível para sobreviver em uma tundra gélida enquanto aguarda seu resgate."
+config/version="v0.0.1"
 config/features=PackedStringArray("4.5")
 config/icon="res://icon.png"
 
