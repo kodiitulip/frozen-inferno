@@ -10,9 +10,9 @@ gélida enquanto aguarda seu resgate.
 - [ ] Fonte de calor (ex. Fogueira)
 - [ ] Comida
 - [ ] Combustível
-- [ ] Inimigos (:question:)
-- [ ] UI (:question:)
-- [ ] Fonte (:question:)
+- [ ] Inimigos :question:
+- [ ] UI :question:
+- [ ] Fonte :question:
 
 ## Mecânicas / Programação
 
