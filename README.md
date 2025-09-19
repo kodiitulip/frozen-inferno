@@ -28,3 +28,19 @@ O jogador foi enviado em uma missão de pesquisa na antártica, porém sua base 
 pesquisa foi danificada em uma tempestade e perdeu conexão com o mundo exterior,
 com apenas um último sinal de emergência sendo enviado antes da conexão cair.
 Agora você deve sobreviver até que ajuda chegue e te resgate.
+
+## Core Loop
+
+```
+╔═════════════════════════╗
+║    Explorar a Tundra    ║╌┐
+╚═════════════════════════╝ ╎
+             ╎              ╎
+╔═════════════════════════╗ ╎
+║    Coletar Recursos     ║ ╎
+╚═════════════════════════╝ ╎
+             ╎              ╎
+╔═════════════════════════╗ ╎
+║ Sobreviver / Se aquecer ║╌┘
+╚═════════════════════════╝
+```
