@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1s84ghn7trup"]
+
+[ext_resource type="Script" uid="uid://22y2oqn8qbb3" path="res://scenes/ui/inventory_ui.gd" id="1_drsq2"]
+[ext_resource type="Texture2D" uid="uid://dvxa5akh14kg" path="res://assets/objects/interactive/fire.png" id="1_u7n8c"]
+[ext_resource type="Texture2D" uid="uid://blswtmrw8rpem" path="res://assets/objects/interactive/fuel.png" id="2_bsps8"]
+[ext_resource type="FontFile" uid="uid://doaeh7nrg7jk0" path="res://assets/fonts/lucky-8_1.ttf" id="2_f5cxw"]
+[ext_resource type="Texture2D" uid="uid://b6gk1aigd0jjp" path="res://assets/objects/interactive/heat.png" id="5_ldtye"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aac20"]
+font = ExtResource("2_f5cxw")
+font_color = Color(0.78431374, 0.8666667, 1, 1)
+outline_size = 4
+outline_color = Color(0.13333334, 0.23921569, 0.89411765, 1)
+shadow_size = 3
+shadow_color = Color(0.02709612, 0.06540891, 0.37738696, 0.47058824)
+
+[node name="InventoryUI" type="VBoxContainer"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 52.0
+script = ExtResource("1_drsq2")
+
+[node name="FuelCounter" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="FuelCounter"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("2_bsps8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="FuelLabel" type="Label" parent="FuelCounter"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_aac20")
+
+[node name="FoodCounter" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="FoodCounter"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("1_u7n8c")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="FoodLabel" type="Label" parent="FoodCounter"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_aac20")
+
+[node name="HeatCounter" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="HeatCounter"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("5_ldtye")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="HeatLabel" type="Label" parent="HeatCounter"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_aac20")
