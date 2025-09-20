@@ -77,12 +77,8 @@ jobs:
     steps:
       - name: Set up environment
         run: |
-          # Default values:
-          echo "app_package_name=${app_binary_name:=${{ env.app_binary_name }}}" >> "${GITHUB_ENV}"
-
-          # File paths:
-          echo "app=tmp/app/${app_package_name}" >> "${GITHUB_ENV}"
-          echo "package=${app_package_name}-"'${{ matrix.platform }}${{ matrix.package_ext }}' >> "${GITHUB_ENV}"
+          echo "app=tmp/app/${{env.app_binary_name}}" >> "${GITHUB_ENV}"
+          echo "package=${{env.app_binary_name}}-"'${{ matrix.platform }}${{ matrix.package_ext }}' >> "${GITHUB_ENV}"
 
           # Check if building for this platform is enabled.
           echo 'is_platform_enabled=${{
@@ -129,7 +125,7 @@ jobs:
           retention-days: 1
 
       - name: Upload package to GitHub release
-        if: ${{ env.is_platform_enabled == 'true' && env.upload_to_github == 'true' }}
+        if: ${{ env.is_platform_enabled == 'true' && inputs.upload_to_github == 'true' }}
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
