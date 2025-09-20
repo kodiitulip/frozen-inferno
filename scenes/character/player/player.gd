@@ -35,8 +35,5 @@ func _place_campfire() -> void:
 	var camp: CampfireArea = CAMPFIRE.instantiate()
 	get_tree().current_scene.add_child(camp)
 	camp.global_position = mouse_follower.global_position\
-			.snapped(Vector2(16, 16))\
-		if mouse_follower\
-		else (global_position + Vector2.DOWN * 10)\
-			.snapped(Vector2(16, 16))
+			.snapped(Vector2(16.0, 16.0)) + Vector2(8.0, 8.0)
 	InventoryManager.fuel -= 5

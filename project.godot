@@ -22,7 +22,7 @@ boot_splash/image="uid://c20mqf5silne4"
 config/icon="uid://b7ymm2nsuxg71"
 config/windows_native_icon="res://assets/icons/icon.ico"
 boot_splash/image.editor_hint=""
-boot_splash/bg_color.editor_hint=Color(0, 0, 0, 1)
+boot_splash/bg_color.editor_hint=Color(0.14117648, 0.14117648, 0.14117648, 1)
 
 [autoload]
 

@@ -83,6 +83,7 @@ jobs:
         run: |
           echo "app=tmp/app/${{env.app_binary_name}}" >> "${GITHUB_ENV}"
           echo "package=${{env.app_binary_name}}-"'${{ matrix.platform }}${{ matrix.package_ext }}' >> "${GITHUB_ENV}"
+          echo "webfolder=${{env.app_binary_name}}-"'${{ matrix.platform }}' >> "${GITHUB_ENV}"
 
           # Check if building for this platform is enabled.
           echo 'is_platform_enabled=${{
@@ -113,12 +114,22 @@ jobs:
 
       - name: Prepare output directories
         if: ${{ env.is_platform_enabled == 'true' }}
-        run: rm -rf tmp; mkdir -p '${{ env.app }}'
+        run: rm -rf tmp; mkdir -p '${{ env.app }}' '${{ env.app }}/${{ env.webfolder }}'
 
-      - name: Build Project
-        if: ${{ env.is_platform_enabled == 'true' }}
-        run: |
-          godot --import ./project.godot --headless --export-release ${{ matrix.platform }} ${{ env.app }}/${{ env.package }}
+      - name: Build Project (non web)
+        if: ${{ env.is_platform_enabled == 'true' && matrix.platform != 'web' }}
+        run: godot --import ./project.godot --headless --export-release ${{ matrix.platform }} ${{ env.app }}/${{ env.package }}
+
+      - name: Build Project (web)
+        if: ${{ env.is_platform_enabled == 'true' && matrix.platform == 'web' }}
+        run: godot --import ./project.godot --headless --export-release ${{ matrix.platform }} ${{ env.app }}/${{ env.webfolder }}/index.html
+
+      - name: Zip Project (web)
+        if: ${{ env.is_platform_enabled == 'true' && matrix.platform == 'web' }}
+        uses: vimtor/action-zip@v1.2
+        with:
+          files: ${{ env.app }}/${{ env.webfolder }}
+          dest: ${{ env.app }}/${{ env.package }}
 
       - name: Upload package to workflow artifacts
         if: ${{ env.is_platform_enabled == 'true' }}
