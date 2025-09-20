@@ -1,19 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhwx338iiabqj"]
+[gd_scene load_steps=6 format=3 uid="uid://bhwx338iiabqj"]
 
 [ext_resource type="Script" uid="uid://b42uq81mon0ac" path="res://scenes/objects/interactive/items/item_body_2d.gd" id="1_h64qc"]
-[ext_resource type="Texture2D" uid="uid://dvxa5akh14kg" path="res://assets/objects/interactive/fire.png" id="2_qxust"]
+[ext_resource type="Texture2D" uid="uid://blswtmrw8rpem" path="res://assets/objects/interactive/fuel.png" id="2_k7d8k"]
+[ext_resource type="Script" uid="uid://cx3vpghd0w701" path="res://scenes/objects/interactive/items/item_info.gd" id="3_ai23m"]
+
+[sub_resource type="Resource" id="Resource_6n5nf"]
+resource_local_to_scene = true
+script = ExtResource("3_ai23m")
+item_icon = ExtResource("2_k7d8k")
+metadata/_custom_type_script = "uid://cx3vpghd0w701"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b2dqm"]
+radius = 5.0
 
 [node name="ItemBody2D" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 4
 collision_mask = 2
 input_pickable = true
 motion_mode = 1
 script = ExtResource("1_h64qc")
+item_info = SubResource("Resource_6n5nf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_b2dqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_qxust")
+texture = ExtResource("2_k7d8k")
