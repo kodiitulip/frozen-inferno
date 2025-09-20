@@ -1,4 +1,5 @@
 <!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD040 -->
 
 # Frozen Inferno
 
@@ -36,7 +37,7 @@ sobreviver e encontrar uma forma de voltar para casa.
 
 ## Core Loop
 
-```txt
+```
 ╔═════════════════════════╗
 ║    Explorar a Tundra    ║╌┐
 ╚═════════════════════════╝ ╎
