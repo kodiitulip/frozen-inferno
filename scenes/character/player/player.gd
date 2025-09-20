@@ -1,22 +1,21 @@
 class_name PlayerCharacterBody2D
 extends CharacterBody2D
 
-@export var move_speed: float = 100
-var heat: float = 20
+var input_dir: Vector2
+var move_speed: float
 
-func _process(delta: float) -> void:
-	heat = max(heat - delta, 0)
+@export var max_move_speed: float = 60
+@export var min_move_speed: float = 20
 
-	var direction: Vector2 = Input.get_vector(
+func _process(_delta: float) -> void:
+	input_dir = Input.get_vector(
 		&"move_left", &"move_right",
 		&"move_up", &"move_down"
-	)
+	).normalized()
+	move_speed = maxf(max_move_speed * (InventoryManager.heat / 24),
+			min_move_speed)
 
-	var move_speed_mod: float = max(move_speed * (heat / 20), 50)
 
-	velocity = direction.normalized() * move_speed_mod * delta * 25
+func _physics_process(_delta: float) -> void:
+	velocity = input_dir * move_speed
 	move_and_slide()
-
-
-func on_campfire_heating(heat_delta: float) -> void:
-	heat = min(heat + heat_delta, 20)
