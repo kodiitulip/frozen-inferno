@@ -1,6 +1,8 @@
 class_name PlayerCharacterBody2D
 extends CharacterBody2D
 
+const CAMPFIRE: PackedScene = preload("uid://848vf8p0lsa7")
+
 var input_dir: Vector2
 var move_speed: float
 
@@ -19,3 +21,22 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	velocity = input_dir * move_speed
 	move_and_slide()
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"build_campfire"):
+		if InventoryManager.fuel >= 5:
+			_place_campfire()
+
+
+func _place_campfire() -> void:
+	var mouse_follower: MouseFollower2D = get_tree()\
+			.get_first_node_in_group("mouse_follower")
+	var camp: CampfireArea = CAMPFIRE.instantiate()
+	get_tree().current_scene.add_child(camp)
+	camp.global_position = mouse_follower.global_position\
+			.snapped(Vector2(16, 16))\
+		if mouse_follower\
+		else (global_position + Vector2.DOWN * 10)\
+			.snapped(Vector2(16, 16))
+	InventoryManager.fuel -= 5
