@@ -78,10 +78,7 @@ jobs:
       - name: Set up environment
         run: |
           # Default values:
-          echo "app_binary_name=${app_binary_name:=${{ env.app_binary_name }}}" >> "${GITHUB_ENV}"
-          echo "app_package_name=${app_package_name:=${app_binary_name}}" >> "${GITHUB_ENV}"
-          echo "app_display_name=${app_display_name:=${app_package_name}}" >> "${GITHUB_ENV}"
-          echo "app_short_name=${app_short_name:=${app_display_name}}" >> "${GITHUB_ENV}"
+          echo "app_package_name=${app_binary_name:=${{ env.app_binary_name }}}" >> "${GITHUB_ENV}"
 
           # File paths:
           echo "app=tmp/app/${app_package_name}" >> "${GITHUB_ENV}"
@@ -94,11 +91,13 @@ jobs:
             (matrix.platform == 'windows' && inputs.build_for_windows)
           }}' >> "${GITHUB_ENV}"
 
-          sed -i 's/config\/version="[^"]*"/config\/version="${{ env.version }}"/' ./project.godot
-
       - name: Checkout repository
         if: ${{ env.is_platform_enabled == 'true' }}
         uses: actions/checkout@v4
+
+      - name: Setup Godot Project Version
+        if: ${{ env.is_platform_enabled == 'true' }}
+        run: sed -i 's/config\/version="[^"]*"/config\/version="${{ env.version }}"/' ./project.godot
 
       - name: Setup Godot
         if: ${{ env.is_platform_enabled == 'true' }}
@@ -114,7 +113,7 @@ jobs:
 
       - name: Prepare output directories
         if: ${{ env.is_platform_enabled == 'true' }}
-        run: rm -rf tmp; mkdir -p tmp/binary '${{ env.app }}'
+        run: rm -rf tmp; mkdir -p '${{ env.app }}'
 
       - name: Build Project (Linux)
         if: ${{ env.is_platform_enabled == 'true' && matrix.platform == 'linux' }}
@@ -125,7 +124,7 @@ jobs:
         if: ${{ env.is_platform_enabled == 'true' }}
         uses: actions/upload-artifact@v4
         with:
-          path: tmp/app/${{ env.package }}
+          path: ${{ env.app }}/${{ env.package }}
           name: package-${{ matrix.platform }}
           retention-days: 1
 
