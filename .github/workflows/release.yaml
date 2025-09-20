@@ -115,8 +115,8 @@ jobs:
         if: ${{ env.is_platform_enabled == 'true' }}
         run: rm -rf tmp; mkdir -p '${{ env.app }}'
 
-      - name: Build Project (Linux)
-        if: ${{ env.is_platform_enabled == 'true' && matrix.platform == 'linux' }}
+      - name: Build Project
+        if: ${{ env.is_platform_enabled == 'true' }}
         run: |
           godot --import ./project.godot --headless --export-release ${{ matrix.platform }} ${{ env.app }}/${{ env.package }}
 
