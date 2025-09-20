@@ -1,26 +1,78 @@
-[gd_scene load_steps=6 format=3 uid="uid://848vf8p0lsa7"]
+[gd_scene load_steps=16 format=3 uid="uid://848vf8p0lsa7"]
 
 [ext_resource type="Texture2D" uid="uid://dvxa5akh14kg" path="res://assets/objects/interactive/fire.png" id="1_65yxs"]
 [ext_resource type="Script" uid="uid://drfmj27iywqyg" path="res://scenes/objects/interactive/campfire/campfire.gd" id="1_i1rsv"]
+[ext_resource type="Texture2D" uid="uid://bmyffsyp1td1p" path="res://assets/objects/interactive/campfire.png" id="2_h8lag"]
+[ext_resource type="Texture2D" uid="uid://blswtmrw8rpem" path="res://assets/objects/interactive/fuel.png" id="4_ihb0d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hcltx"]
-radius = 12.0
+radius = 21.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_65yxs"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8lag"]
+bg_color = Color(0.17641908, 0.17641911, 0.17641899, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.13333334, 0.23921569, 0.89411765, 1)
+expand_margin_left = 1.0
+expand_margin_right = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1rsv"]
-bg_color = Color(0.13333334, 0.23921569, 0.89411765, 1)
+bg_color = Color(0.78431374, 0.8666667, 1, 1)
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.13333334, 0.23921569, 0.89411765, 1)
+
+[sub_resource type="Curve" id="Curve_ihb0d"]
+_limits = [-12.0, 12.0, 0.0, 1.0]
+_data = [Vector2(0, 4.7683716e-07), 0.0, 0.0, 0, 0, Vector2(0.5, -2.5), 0.0, 0.0, 0, 0, Vector2(1, 4.7683716e-07), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pl0wg"]
+curve = SubResource("Curve_ihb0d")
+
+[sub_resource type="Gradient" id="Gradient_lnj84"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.18431373)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1x8rd"]
+gradient = SubResource("Gradient_lnj84")
+
+[sub_resource type="Curve" id="Curve_2w7bl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_u2skd"]
+curve = SubResource("Curve_2w7bl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hqjdv"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -3, 0)
+emission_shape = 1
+emission_sphere_radius = 4.7
+angle_min = -11.9999895
+angle_max = 12.0000105
+angle_curve = SubResource("CurveTexture_pl0wg")
+gravity = Vector3(0, -98, 0)
+damping_min = 50.000004
+damping_max = 60.000004
+scale_curve = SubResource("CurveTexture_u2skd")
+color_ramp = SubResource("GradientTexture1D_1x8rd")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h8lag"]
+radius = 4.0
+height = 12.0
 
 [node name="Campfire" type="Area2D"]
+y_sort_enabled = true
+collision_mask = 2
 script = ExtResource("1_i1rsv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hcltx")
 
-[node name="Fire" type="Sprite2D" parent="."]
-texture = ExtResource("1_65yxs")
-
 [node name="FuelBar" type="ProgressBar" parent="."]
+z_index = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -34,8 +86,43 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 4
-theme_override_styles/background = SubResource("StyleBoxEmpty_65yxs")
+theme_override_styles/background = SubResource("StyleBoxFlat_h8lag")
 theme_override_styles/fill = SubResource("StyleBoxFlat_i1rsv")
 step = 1.0
 value = 100.0
 show_percentage = false
+
+[node name="Campfire" type="Sprite2D" parent="."]
+texture = ExtResource("2_h8lag")
+
+[node name="FireParticles" type="GPUParticles2D" parent="Campfire"]
+unique_name_in_owner = true
+amount = 6
+texture = ExtResource("1_65yxs")
+lifetime = 1.5
+process_material = SubResource("ParticleProcessMaterial_hqjdv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_h8lag")
+debug_color = Color(0.82304466, 0.3762046, 0.37414548, 0.41960785)
+
+[node name="MouseIndicator" type="TextureRect" parent="."]
+z_index = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -26.0
+offset_right = 4.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("4_ihb0d")
+expand_mode = 3
+stretch_mode = 5
