@@ -19,18 +19,19 @@ texture = ExtResource("1_ph635")
 0:1/size_in_atlas = Vector2i(2, 2)
 0:1/0 = 0
 0:1/0/texture_origin = Vector2i(0, 8)
-2:2/size_in_atlas = Vector2i(4, 4)
-2:2/0 = 0
-2:2/0/y_sort_origin = 32
-2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+0:3/size_in_atlas = Vector2i(4, 4)
+0:3/0 = 0
+0:3/0/y_sort_origin = 32
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, -16, -4, -20, 4, -20, 20, -16, 20, 32, 12, 32, 4, 28, -4, 28, -12, 32, -20, 32)
+5:0/size_in_atlas = Vector2i(3, 8)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(0, 40)
+5:0/0/y_sort_origin = 11
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_q0wvi"]
 scenes/1/scene = ExtResource("2_u8nke")
-scenes/1/display_placeholder = ExtResource("2_u8nke")
 scenes/2/scene = ExtResource("3_48r52")
-scenes/2/display_placeholder = ExtResource("3_48r52")
 scenes/3/scene = ExtResource("4_sfowa")
-scenes/3/display_placeholder = ExtResource("4_sfowa")
 
 [resource]
 physics_layer_0/collision_layer = 1
