@@ -114,7 +114,7 @@ jobs:
       - name: Build Project (Linux)
         if: ${{ env.is_platform_enabled == 'true' && matrix.platform == 'linux' }}
         run: |
-          godot --import ./project.godot --quiet --headless --export-release ${{ matrix.platform }} ${{ env.app }}/${{ env.package }}
+          godot --import ./project.godot --headless --export-release ${{ matrix.platform }} ${{ env.app }}/${{ env.package }}
 
       - name: Upload package to workflow artifacts
         if: ${{ env.is_platform_enabled == 'true' }}
@@ -125,7 +125,7 @@ jobs:
           retention-days: 1
 
       - name: Upload package to GitHub release
-        if: ${{ env.is_platform_enabled == 'true' && inputs.upload_to_github == 'true' }}
+        if: ${{ env.is_platform_enabled == 'true' && inputs.upload_to_github }}
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}

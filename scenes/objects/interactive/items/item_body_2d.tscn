@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhwx338iiabqj"]
+
+[ext_resource type="Script" uid="uid://b42uq81mon0ac" path="res://scenes/objects/interactive/items/item_body_2d.gd" id="1_h64qc"]
+[ext_resource type="Texture2D" uid="uid://dvxa5akh14kg" path="res://assets/objects/interactive/fire.png" id="2_qxust"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b2dqm"]
+
+[node name="ItemBody2D" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+input_pickable = true
+motion_mode = 1
+script = ExtResource("1_h64qc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b2dqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_qxust")

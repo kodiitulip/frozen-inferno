@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://848vf8p0lsa7"]
 
 [ext_resource type="Texture2D" uid="uid://dvxa5akh14kg" path="res://assets/objects/interactive/fire.png" id="1_65yxs"]
-[ext_resource type="Script" uid="uid://drfmj27iywqyg" path="res://scenes/objects/interactive/campfire.gd" id="1_i1rsv"]
+[ext_resource type="Script" uid="uid://drfmj27iywqyg" path="res://scenes/objects/interactive/campfire/campfire.gd" id="1_i1rsv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hcltx"]
 radius = 12.0

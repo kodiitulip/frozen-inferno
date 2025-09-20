@@ -1,6 +1,8 @@
+class_name CampfireArea
 extends Area2D
 
 signal campfire_heated(heat: float)
+signal campfire_feed(campfire: CampfireArea)
 
 var player: PlayerCharacterBody2D
 var fuel: float = 100
@@ -32,4 +34,11 @@ func _on_body_exited(body: Node2D) -> void:
 	if body != player:
 		return
 	campfire_heated.disconnect(player.on_campfire_heating)
+	
 	player = null
+
+
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event.is_action_pressed(&"mouse_click_left") and player:
+		pass
+	pass
