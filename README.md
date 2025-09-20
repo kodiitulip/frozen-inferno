@@ -1,34 +1,37 @@
+<!-- markdownlint-disable MD033 -->
+
 # Frozen Inferno
 
-Um jogo em que você busca alimento e combustível para sobreviver em uma tundra
-gélida enquanto aguarda seu resgate.
+Um jogo em que você busca recursos para sobreviver a uma nevasca enquanto procura
+um meio de voltar para casa.
 
 ## Assets
 
-- [ ] Tileset (Ambiente, chão, obstáculos, ...)
+- [x] Tileset (Ambiente, chão, obstáculos, ...)
 - [x] Personagem
 - [x] Fonte de calor (ex. Fogueira)
-- [ ] Comida
-- [ ] Combustível
+- [ ] ~Comida~
+- [x] Combustível
 - [ ] Inimigos :question:
-- [ ] UI :question:
-- [ ] Fonte :question:
+- [x] UI
+- [x] Fonte
 
 ## Mecânicas / Programação
 
 - [x] Exploração (controlar o player)
-- [ ] Coleta de Recurso (inventário simples :question:)
-- [ ] Consumo de combustível pela Fogueira
-- [ ] Fome
+- [x] Coleta de Recurso
+- [x] Inventário simples
+- [x] Consumo de combustível pela Fogueira
+- [ ] ~Fome~
 - [x] Aquecer / Esfriar
-- [ ] Ciclio Dia e Noite simplificado :question:
+- [ ] ~Ciclio Dia e Noite simplificado~
+- [x] "Spawn" de recursos
 
 ## Narrativa
 
-O jogador foi enviado em uma missão de pesquisa na antártica, porém sua base de
-pesquisa foi danificada em uma tempestade e perdeu conexão com o mundo exterior,
-com apenas um último sinal de emergência sendo enviado antes da conexão cair.
-Agora você deve sobreviver até que ajuda chegue e te resgate.
+O jogador foi enviado em uma missão de pesquisa, porém sua base de pesquisa foi
+danificada em uma nevasca e perdeu conexão com o mundo exterior. Agora você deve
+sobreviver e encontrar uma forma de voltar para casa.
 
 ## Core Loop
 
@@ -45,3 +48,9 @@ Agora você deve sobreviver até que ajuda chegue e te resgate.
 ║ Sobreviver / Se aquecer ║╌┘
 ╚═════════════════════════╝
 ```
+
+## Licenças
+
+- Fonte: [FontStruction “Lucky #8” by “Galaxy Go-Kart”](https://www.fontstruct.com/fontstructions/show/2720372)
+  is licensed under a [CCBY-NC-SA3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)
+- Assets: Assets criados por mim estão sobre a licença [CC01.0](https://creativecommons.org/publicdomain/zero/1.0/)

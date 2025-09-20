@@ -1,0 +1,39 @@
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://djga7gibcidn5"]
+
+[ext_resource type="Texture2D" uid="uid://2eqb7x0k27pg" path="res://assets/tilesets/tileset.png" id="1_ph635"]
+[ext_resource type="PackedScene" uid="uid://d084bc78ewb35" path="res://scenes/objects/interactive/tree/tree.tscn" id="2_u8nke"]
+[ext_resource type="PackedScene" uid="uid://bhwx338iiabqj" path="res://scenes/objects/interactive/items/item_body_2d.tscn" id="3_48r52"]
+[ext_resource type="PackedScene" uid="uid://848vf8p0lsa7" path="res://scenes/objects/interactive/campfire/campfire.tscn" id="4_sfowa"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4j75"]
+texture = ExtResource("1_ph635")
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/probability = 0.01
+2:0/0 = 0
+2:0/0/probability = 0.01
+3:0/0 = 0
+3:0/0/probability = 0.01
+4:0/0 = 0
+4:0/0/probability = 0.01
+0:1/size_in_atlas = Vector2i(2, 2)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 8)
+2:2/size_in_atlas = Vector2i(4, 4)
+2:2/0 = 0
+2:2/0/y_sort_origin = 32
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_q0wvi"]
+scenes/1/scene = ExtResource("2_u8nke")
+scenes/1/display_placeholder = ExtResource("2_u8nke")
+scenes/2/scene = ExtResource("3_48r52")
+scenes/2/display_placeholder = ExtResource("3_48r52")
+scenes/3/scene = ExtResource("4_sfowa")
+scenes/3/display_placeholder = ExtResource("4_sfowa")
+
+[resource]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_d4j75")
+sources/1 = SubResource("TileSetScenesCollectionSource_q0wvi")

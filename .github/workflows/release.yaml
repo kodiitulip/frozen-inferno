@@ -23,6 +23,10 @@ on:
         description: "Upload to GitHub releases"
         default: true
         type: boolean
+      github_release_desc:
+        description: "Description for the github release"
+        default: ""
+        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
@@ -133,4 +137,5 @@ jobs:
           asset_name: ${{ env.package }}
           release_name: ${{ env.version }}
           tag: ${{ env.version }}
+          body: ${{ inputs.github_release_desc }}
           overwrite: true
