@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bfdm2egvsjugu"]
+
+[ext_resource type="FontFile" uid="uid://doaeh7nrg7jk0" path="res://assets/fonts/lucky-8_1.ttf" id="1_li8ak"]
+
+[resource]
+font = ExtResource("1_li8ak")
+font_color = Color(0.78431374, 0.8666667, 1, 1)
+outline_size = 4
+outline_color = Color(0.13333334, 0.23921569, 0.89411765, 1)
+shadow_size = 3
+shadow_color = Color(0.02709612, 0.06540891, 0.37738696, 0.47058824)

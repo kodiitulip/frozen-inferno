@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5lere3hyu2gp"]
+
+[ext_resource type="Script" uid="uid://c6tuipqx1wsru" path="res://scenes/ui/quit_ui/quit_ui.gd" id="1_aaspf"]
+[ext_resource type="LabelSettings" uid="uid://bfdm2egvsjugu" path="res://assets/fonts/label_settings.tres" id="2_7b5r5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfvqx"]
+bg_color = Color(0.17641908, 0.17641911, 0.17641899, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.13333334, 0.23921569, 0.89411765, 1)
+expand_margin_left = 1.0
+expand_margin_right = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvokf"]
+bg_color = Color(0.78431374, 0.8666667, 1, 1)
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.13333334, 0.23921569, 0.89411765, 1)
+
+[node name="QuitUI" type="ProgressBar"]
+z_index = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -62.0
+offset_top = 24.0
+offset_right = -16.0
+offset_bottom = 28.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_jfvqx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pvokf")
+max_value = 1.5
+step = 0.001
+value = 1.4
+show_percentage = false
+script = ExtResource("1_aaspf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_top = -12.0
+offset_bottom = -1.0
+grow_horizontal = 0
+text = "Esc to quit"
+label_settings = ExtResource("2_7b5r5")
