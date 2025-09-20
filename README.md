@@ -12,7 +12,7 @@ um meio de voltar para casa.
 - [x] Fonte de calor (ex. Fogueira)
 - [ ] ~Comida~
 - [x] Combustível
-- [ ] Inimigos :question:
+- [ ] ~Inimigos~
 - [x] UI
 - [x] Fonte
 
@@ -26,6 +26,7 @@ um meio de voltar para casa.
 - [x] Aquecer / Esfriar
 - [ ] ~Ciclio Dia e Noite simplificado~
 - [x] "Spawn" de recursos
+- [x] Construir novas Fogueiras
 
 ## Narrativa
 
