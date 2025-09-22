@@ -8,7 +8,7 @@ um meio de voltar para casa.
 
 ## Assets
 
-- [x] Tileset (Ambiente, chão, obstáculos, ...)
+- [ ] Tileset (Ambiente, chão, obstáculos, água, ...)
 - [x] Personagem
 - [x] Fonte de calor (ex. Fogueira)
 - [ ] ~Comida~
@@ -16,6 +16,8 @@ um meio de voltar para casa.
 - [ ] ~Inimigos~
 - [x] UI
 - [x] Fonte
+- [ ] Barco de fuga
+- [ ] Efeito de congelar
 
 ## Mecânicas / Programação
 
@@ -28,6 +30,8 @@ um meio de voltar para casa.
 - [ ] ~Ciclio Dia e Noite simplificado~
 - [x] "Spawn" de recursos
 - [x] Construir novas Fogueiras
+- [ ] 'Win Condition'
+- [ ] Morte por Frio
 
 ## Narrativa
 
