@@ -27,6 +27,10 @@ on:
         description: "Description for the github release"
         default: ""
         type: string
+      upload_to_itch:
+        description: "Upload to itch.io"
+        default: false
+        type: boolean
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
@@ -35,8 +39,17 @@ concurrency:
 env:
   godot_version: 4.5.0
   app_binary_name: frozen-inferno
+  itch_page: "kodiitulip/frozen-inferno"
 
 jobs:
+  foward-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: do nothing
+        run: "true"
+    outputs:
+      itch_page: ${{ env.itch_page }}
+
   # Determine the version number for this workflow.
   get-version:
     runs-on: ubuntu-latest
@@ -150,3 +163,38 @@ jobs:
           tag: ${{ env.version }}
           body: ${{ inputs.github_release_desc }}
           overwrite: true
+  upload-to-itch:
+    runs-on: ubuntu-latest
+    needs:
+      - foward-env
+      - get-version
+      - build
+    if: ${{ inputs.upload_to_itch && needs.foward-env.outputs.itch_page != '' }}
+    env:
+      app: tmp/app/${{env.app_binary_name}}
+
+    steps:
+      - name: Download all packages
+        uses: actions/download-artifact@v4
+        with:
+          pattern: package-*
+          path: ${{ env.app }}
+
+      - name: Install buttler
+        run: |
+          curl -L -o butler.zip 'https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default'
+          uzip butler.zip
+          chmod +x butler
+          ./butler -V
+
+      - name: Upload all packages to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
+        run: |
+          for channel in $(ls ${{ env.app }}); do
+            ./butler push \
+              --fix-permissions \
+              --userversion='${{ needs.get-version.outputs.version }}' \
+              ${{ env.app }}/"${channel}"/* \
+              '${{ env.itch_page }}':"${channel#package-}"
+          done
