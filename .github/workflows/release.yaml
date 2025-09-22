@@ -172,30 +172,25 @@ jobs:
     if: ${{ inputs.upload_to_itch && needs.foward-env.outputs.itch_page != '' }}
 
     steps:
-      - name: Prepare enviroment
-        run: echo "app=tmp/app/${{ env.app_binary_name }}" >> "${GITHUB_ENV}"
-
       - name: Download all packages
         uses: actions/download-artifact@v4
         with:
           pattern: package-*
-          path: ${{ env.app }}
+          path: tmp
 
-      - name: Install buttler
-        run: |
-          curl -L -o butler.zip 'https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default'
-          uzip butler.zip
-          chmod +x butler
-          ./butler -V
+      - name: Setup buttler
+        uses: remarkablegames/setup-butler@v2
+        with:
+          butler-version: LATEST
 
       - name: Upload all packages to itch.io
-        env:
-          BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
         run: |
-          for channel in $(ls ${{ env.app }}); do
+          for channel in $(ls tmp); do
             ./butler push \
               --fix-permissions \
               --userversion='${{ needs.get-version.outputs.version }}' \
-              ${{ env.app }}/"${channel}"/* \
+              tmp/"${channel}"/* \
               '${{ env.itch_page }}':"${channel#package-}"
           done
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
