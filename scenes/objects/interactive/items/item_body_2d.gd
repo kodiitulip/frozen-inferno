@@ -33,8 +33,6 @@ func _handle_pick_up() -> void:
 	match item_info.item_type:
 		ItemInfo.ItemType.FUEL:
 			InventoryManager.fuel += 1
-		ItemInfo.ItemType.FOOD:
-			InventoryManager.food += 1
 		_:
 			return queue_free()
 	queue_free()

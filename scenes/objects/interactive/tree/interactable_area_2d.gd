@@ -16,9 +16,10 @@ func _ready() -> void:
 
 func _on_input_event(_v: Node, event: InputEvent, _si: int) -> void:
 	if event.is_action_pressed(&"mouse_click_left"):
+		var degre: float = ((randi_range(0, 1) * 2) - 1) * 5
 		var t: Tween = get_tree().create_tween().set_trans(Tween.TRANS_BOUNCE)
-		t.tween_property(sprite_2d, ^"rotation_degrees", 5, 0.2)
-		t.tween_property(sprite_2d, ^"rotation_degrees", -5, 0.3)
+		t.tween_property(sprite_2d, ^"rotation_degrees", degre, 0.2)
+		t.tween_property(sprite_2d, ^"rotation_degrees", -degre, 0.3)
 		t.tween_property(sprite_2d, ^"rotation_degrees", 0, 0.2)
 		tries -= 1
 		if tries > 0:
