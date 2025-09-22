@@ -59,7 +59,7 @@ jobs:
         run: echo "ref=${GITHUB_REF#refs/*/}" >> "${GITHUB_OUTPUT}"
     outputs:
       # Use the input from workflow dispatch, or fall back to the git ref.
-      version: ${{ inputs.version || steps.ref.outputs.ref }}
+      version: ${{ inputs.version || steps.tag.outputs.ref }}
 
   # Build and package a release for each platform.
   build:
@@ -170,10 +170,11 @@ jobs:
       - get-version
       - build
     if: ${{ inputs.upload_to_itch && needs.foward-env.outputs.itch_page != '' }}
-    env:
-      app: tmp/app/${{env.app_binary_name}}
 
     steps:
+      - name: Prepare enviroment
+        run: echo "app=tmp/app/${{ env.app_binary_name }}" >> "${GITHUB_ENV}"
+
       - name: Download all packages
         uses: actions/download-artifact@v4
         with:
