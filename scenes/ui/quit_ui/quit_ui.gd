@@ -1,5 +1,10 @@
 extends ProgressBar
 
+func _enter_tree() -> void:
+	if OS.has_feature("web"):
+		queue_free()
+
+
 func _process(delta: float) -> void:
 	visible = value > 0.0
 	if Input.is_action_pressed(&"escape"):
