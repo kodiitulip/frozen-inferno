@@ -57,5 +57,3 @@ sobreviver e encontrar uma forma de voltar para casa.
   is licensed under a [CCBY-NC-SA3.0](http://creativecommons.org/licenses/by-nc-sa/3.0/)
 - Assets: Assets criados por mim estão sobre a licença [CC01.0](https://creativecommons.org/publicdomain/zero/1.0/)
 - Código: O código desse projeto está sobre a licença [MIT](https://choosealicense.com/licenses/mit/)
-
-`SPDX-License-Identifier: MIT AND CCBY-NC-SA-3.0 AND CC0-1.0`
