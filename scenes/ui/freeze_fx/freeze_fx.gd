@@ -1,4 +1,4 @@
-@tool
+# @tool
 extends CanvasLayer
 
 var freezing: bool = false:
