@@ -8,16 +8,16 @@ um meio de voltar para casa.
 
 ## Assets
 
-- [ ] Tileset (Ambiente, chão, obstáculos, água, ...)
+- [x] Tileset (Ambiente, chão, obstáculos, água, ...)
 - [x] Personagem
 - [x] Fonte de calor (ex. Fogueira)
-- [ ] ~Comida~
+- ~Comida~ (Descartado)
 - [x] Combustível
-- [ ] ~Inimigos~
+- ~Inimigos~ (Descartado)
 - [x] UI
 - [x] Fonte
-- [ ] Barco de fuga
-- [ ] Efeito de congelar
+- ~Barco de fuga~ (Descartado)
+- [x] Efeito de congelar
 
 ## Mecânicas / Programação
 
@@ -25,13 +25,13 @@ um meio de voltar para casa.
 - [x] Coleta de Recurso
 - [x] Inventário simples
 - [x] Consumo de combustível pela Fogueira
-- [ ] ~Fome~
+- ~Fome~ (Descartado)
 - [x] Aquecer / Esfriar
-- [ ] ~Ciclio Dia e Noite simplificado~
+- ~Ciclio Dia e Noite simplificado~ (Descartado)
 - [x] "Spawn" de recursos
 - [x] Construir novas Fogueiras
 - [ ] 'Win Condition'
-- [ ] Morte por Frio
+- [x] Morte por Frio
 
 ## Narrativa
 
@@ -47,11 +47,11 @@ sobreviver e encontrar uma forma de voltar para casa.
 ╚═════════════════════════╝ ╎
              ╎              ╎
 ╔═════════════════════════╗ ╎
-║    Coletar Recursos     ║ ╎
+║    Coletar Gravetos     ║ ╎
 ╚═════════════════════════╝ ╎
              ╎              ╎
 ╔═════════════════════════╗ ╎
-║ Sobreviver / Se aquecer ║╌┘
+║        Se aquecer       ║╌┘
 ╚═════════════════════════╝
 ```
 
