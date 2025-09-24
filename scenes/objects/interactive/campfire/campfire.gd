@@ -42,8 +42,10 @@ func _on_body_exited(body: Node2D) -> void:
 	mouse_indicator.hide()
 
 
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event.is_action_pressed(&"mouse_click_left") and player:
+func _on_input_event(_v: Node, event: InputEvent, _si: int) -> void:
+	var interacted: bool = event.is_action_pressed(&"mouse_click_left") or  \
+			(event is InputEventScreenTouch and event.is_pressed())
+	if player and interacted:
 		if InventoryManager.fuel <= 0:
 			return
 		InventoryManager.fuel = maxi(InventoryManager.fuel - 1, 0)

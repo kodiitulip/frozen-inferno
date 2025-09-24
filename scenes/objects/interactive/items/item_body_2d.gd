@@ -39,4 +39,15 @@ func _handle_pick_up() -> void:
 
 
 func _on_mouse_entered() -> void:
-	is_being_picked_up = true
+	#is_being_picked_up = true
+	pass
+
+
+func _on_input_event(_v: Node, event: InputEvent, _si: int) -> void:
+	var interacted: bool = (
+		event is InputEventMouseMotion or
+		event is InputEventScreenDrag or
+		event is InputEventScreenTouch
+	)
+	if interacted:
+		is_being_picked_up = true

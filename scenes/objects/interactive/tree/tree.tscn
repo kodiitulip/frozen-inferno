@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://d084bc78ewb35"]
+[gd_scene load_steps=8 format=3 uid="uid://d084bc78ewb35"]
 
 [ext_resource type="Texture2D" uid="uid://2eqb7x0k27pg" path="res://assets/tilesets/tileset.png" id="1_jft45"]
-[ext_resource type="Script" uid="uid://c4ntbc0svxccd" path="res://scenes/objects/interactive/tree/interactable_area_2d.gd" id="2_33kyi"]
+[ext_resource type="Script" uid="uid://c4ntbc0svxccd" path="res://scenes/objects/interactive/tree/tree_body.gd" id="2_33kyi"]
+[ext_resource type="Texture2D" uid="uid://blswtmrw8rpem" path="res://assets/objects/interactive/fuel.png" id="2_b1a81"]
+[ext_resource type="Script" uid="uid://cx3vpghd0w701" path="res://scenes/objects/interactive/items/item_info.gd" id="3_bqsda"]
+
+[sub_resource type="Resource" id="Resource_mso2s"]
+script = ExtResource("3_bqsda")
+item_icon = ExtResource("2_b1a81")
+metadata/_custom_type_script = "uid://cx3vpghd0w701"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_33kyi"]
 radius = 5.0
@@ -12,6 +19,8 @@ height = 22.0
 [node name="Tree" type="StaticBody2D"]
 y_sort_enabled = true
 collision_mask = 2
+script = ExtResource("2_33kyi")
+drpped_item = SubResource("Resource_mso2s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_jft45")
@@ -27,8 +36,9 @@ debug_color = Color(0, 0.6403029, 0.35661066, 0.41960785)
 [node name="InteractableArea2D" type="Area2D" parent="."]
 position = Vector2(0, -12)
 collision_mask = 0
-script = ExtResource("2_33kyi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D"]
 shape = SubResource("CapsuleShape2D_jft45")
 debug_color = Color(0.85143065, 0.3701058, 0.09817579, 0.41960785)
+
+[connection signal="input_event" from="InteractableArea2D" to="." method="_on_input_event"]

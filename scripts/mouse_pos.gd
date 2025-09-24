@@ -10,3 +10,4 @@ func _process(_delta: float) -> void:
 		return
 	global_position = (get_global_mouse_position() - anchor.global_position
 		).limit_length(max_distance) + anchor.global_position
+	pass
